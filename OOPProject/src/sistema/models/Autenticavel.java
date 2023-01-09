@@ -1,6 +1,6 @@
 package sistema.models;
 
-import sistema.model.exceptions.FalhaAoAutenticarException;
+import sistema.models.exceptions.FalhaAoAutenticarException;
 
 public interface Autenticavel {
 

@@ -1,4 +1,4 @@
-package sistema.model.exceptions;
+package sistema.models.exceptions;
 
 public class FalhaAoAutenticarException extends Exception {
 

@@ -7,7 +7,7 @@ import sistema.date.exceptions.InserirUsuarioException;
 import sistema.date.exceptions.LoginNaoEncontradoException;
 import sistema.date.exceptions.UsuarioMesmoLoginException;
 import sistema.date.exceptions.UsuarioNaoEncontradoException;
-import sistema.model.exceptions.FalhaAoAutenticarException;
+import sistema.models.exceptions.FalhaAoAutenticarException;
 import sistema.models.Usuario;
 import sistema.view.MenuView;
 import sistema.view.UsuarioView;
