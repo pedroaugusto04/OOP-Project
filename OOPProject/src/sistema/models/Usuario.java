@@ -46,16 +46,10 @@ public class Usuario implements Cloneable, Autenticavel {
         return this.tipo;
     }
 
-    @Override
-    public void autentica(Usuario u) throws FalhaAoAutenticarException, IllegalArgumentException {
-        if (u != null) {
-            if (!(senha.equals(u.senha))) {
-                throw new FalhaAoAutenticarException("Senha incorreta. Tente novamente.");
-            }
-        } else {
-            throw new IllegalArgumentException();
-        }
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
     }
+    
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -85,6 +79,17 @@ public class Usuario implements Cloneable, Autenticavel {
             }
         } else {
             return false;
+        }
+    }
+    
+    @Override
+    public void autentica(Usuario u) throws FalhaAoAutenticarException, IllegalArgumentException {
+        if (u != null) {
+            if (!(senha.equals(u.senha))) {
+                throw new FalhaAoAutenticarException("Senha incorreta. Tente novamente.");
+            }
+        } else {
+            throw new IllegalArgumentException();
         }
     }
 }

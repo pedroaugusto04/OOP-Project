@@ -1,6 +1,7 @@
 package sistema.controls;
 
 import java.util.List;
+import main.Sistema;
 import sistema.date.IRepositorioUsuario;
 import sistema.date.exceptions.InserirUsuarioException;
 import sistema.date.exceptions.LoginNaoEncontradoException;
@@ -8,6 +9,7 @@ import sistema.date.exceptions.UsuarioMesmoLoginException;
 import sistema.date.exceptions.UsuarioNaoEncontradoException;
 import sistema.model.exceptions.FalhaAoAutenticarException;
 import sistema.models.Usuario;
+import sistema.view.MenuView;
 import sistema.view.UsuarioView;
 
 public class ControleUsuario {
@@ -54,7 +56,6 @@ public class ControleUsuario {
     }
 
     public void alterar() {
-        System.out.println("------MENU ALTERACAO--------");
         listar();
         long id = usuarioView.getIdUsuario();
         Usuario u = repositorioUsuario.buscar(id);
@@ -91,8 +92,20 @@ public class ControleUsuario {
         Usuario uLogin;
         Usuario uClone = null;
         boolean autenticou;
+        MenuView menuView = new MenuView();
+        int opcaoLogin;
         do {
             autenticou = true;
+            do {
+                opcaoLogin = menuView.menuLogin();
+                if (opcaoLogin == 0) {
+                    Sistema sistema = Sistema.getInstance();
+                    sistema.iniciarMenuPrincipal();
+                } else if (opcaoLogin == 1) {
+                    break;
+                }
+            } while (opcaoLogin != 0 && opcaoLogin != 1);
+
             uLogin = usuarioView.dadosLogin();
             try {
                 uClone = repositorioUsuario.buscarUsuarioMesmoLogin(uLogin);

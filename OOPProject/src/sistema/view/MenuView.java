@@ -54,4 +54,13 @@ public class MenuView {
         System.out.print("Selecione uma opção: ");
         return sc.nextInt();
     }
+    
+    public int menuLogin(){
+        System.out.println("------MENU LOGIN--------");
+        System.out.println("[0] - Voltar ao menu principal");
+        System.out.println("[1] - Logar");
+        System.out.println("-------------------");
+        System.out.print("Selecione uma opção: ");
+        return sc.nextInt();
+    }
 }

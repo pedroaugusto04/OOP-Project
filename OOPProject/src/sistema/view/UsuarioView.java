@@ -27,24 +27,18 @@ public class UsuarioView {
         String senha = sc.next();
         sc.nextLine();
         Tipo tipo = Tipo.INDEFINIDO;
-        boolean confirmacaoTipo = true;
-        while (confirmacaoTipo) {
-            System.out.print("Tipo: ");
-            try {
-                String tipoString = sc.next().toUpperCase();
-                sc.nextLine();
-                if (tipoString.equals("ATENDENTE")) {
-                    tipo = Tipo.ATENDENTE;
-                    confirmacaoTipo = false;
-                }
-                if (tipoString.equals("MEDICO")) {
-                    tipo = Tipo.MEDICO;
-                    confirmacaoTipo = false;
-                }
-            } catch (InputMismatchException e) {
-                System.out.println(e.getMessage());
-                sc.nextLine();
+        System.out.print("Tipo: ");
+        try {
+            String tipoString = sc.next().toUpperCase();
+            sc.nextLine();
+            if (tipoString.equals("ATENDENTE")) {
+                tipo = Tipo.ATENDENTE;
+            } else if (tipoString.equals("MEDICO")) {
+                tipo = Tipo.MEDICO;
             }
+        } catch (InputMismatchException e) {
+            System.out.println(e.getMessage());
+            sc.nextLine();
         }
         Usuario u = Usuario.getInstance(nome, nomeLogin, senha, tipo);
         return u;
@@ -96,6 +90,7 @@ public class UsuarioView {
                 System.out.println("1 - Alterar Nome");
                 System.out.println("2 - Alterar Login ");
                 System.out.println("3 - Alterar Senha ");
+                System.out.println("4 - Alterar tipo");
                 System.out.println("-------------------------------");
                 opcao = sc.nextInt();
                 sc.nextLine();
@@ -117,7 +112,26 @@ public class UsuarioView {
                         uAlterado.setSenha(sc.nextLine());
                         System.out.println("Senha alterada com sucesso!");
                         break;
-
+                    case 4:
+                        System.out.println("Digite o novo tipo do Usuário: ");
+                        Tipo tipo = Tipo.INDEFINIDO;
+                        try {
+                            String tipoString = sc.next().toUpperCase();
+                            sc.nextLine();
+                            if (tipoString.equals("ATENDENTE")) {
+                                tipo = Tipo.ATENDENTE;
+                            } else if (tipoString.equals("MEDICO")) {
+                                tipo = Tipo.MEDICO;
+                            }
+                        } catch (InputMismatchException e) {
+                            System.out.println(e.getMessage());
+                            sc.nextLine();
+                        }
+                        uAlterado.setTipo(tipo);
+                        System.out.println("Tipo alterado com sucesso!");
+                        break;
+                    default:
+                        System.out.println("Opção inválida");
                 }
             } while (opcao != 0);
         } else {

@@ -95,14 +95,18 @@ public class RepositorioUsuario implements IRepositorioUsuario {
     @Override
     public void alterar(Usuario usuarioAlterado)
             throws UsuarioNaoEncontradoException {
+        boolean encontrouUsuario = false;
         for (int i = 0; i < usuarios.size(); i++) {
             if (usuarios.get(i) != null) {
                 if (usuarios.get(i).equals(usuarioAlterado)) {
                     usuarios.set(i, usuarioAlterado);
+                    encontrouUsuario = true;
                 }
             }
         }
-        throw new UsuarioNaoEncontradoException("Usuario não encontrado.");
+        if (!encontrouUsuario){
+            throw new UsuarioNaoEncontradoException("Usuario não encontrado.");    
+        }
     }
 
     @Override
